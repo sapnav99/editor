@@ -1,0 +1,29 @@
+/* App.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.menu-container {
+  flex: 0 0 60px;
+  background-color: none;
+  padding: 10px;
+}
+
+.content-container {
+  flex: 1;
+  display: flex; /* Display editor and dropdown side by side */
+}
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #ddd; /* Add a border to separate editor and dropdown */
+}
+
+/* Add any additional styles you need */
+
+

@@ -1,0 +1,12 @@
+.dark {
+    background-color: #333;
+    color: #fff; /* Set the font color to white or other light color */
+  }
+  
+  .dark h1,
+  .dark p
+  /* Add other text elements that need to be styled */
+  {
+    color: #fff;
+  }
+  
