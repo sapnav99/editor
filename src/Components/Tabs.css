@@ -1,0 +1,5 @@
+/* Add styles for the active tab */
+.active-tab {
+    border-bottom: 2px solid red;
+  }
+  

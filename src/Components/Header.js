@@ -3,8 +3,9 @@ import { AiOutlineUser, AiOutlineBell, AiOutlineUserAdd, AiOutlineMenu, AiOutlin
 import { Dropdown, Form } from 'react-bootstrap';
 import { ThemeContext, themes } from './ThemeContext';
 import Tabs from './Tabs';
+import PropTypes from 'prop-types';
 
-const Header = ({ onMenuClick }) => {
+const Header = ({ onMenuClick, onSearch }) => {
   const { theme, changeTheme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -13,13 +14,19 @@ const Header = ({ onMenuClick }) => {
   };
 
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+    const searchQuery = event.target.value;
+    setSearchQuery(searchQuery);
+    onSearch(searchQuery);
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     
     console.log('Searching for:', searchQuery);
+  };
+  Header.propTypes = {
+    onMenuClick: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired, // Add the onSearch prop type
   };
 
   return (

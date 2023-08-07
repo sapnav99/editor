@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import Tree from './Tree';
 import { BsPlus } from 'react-icons/bs';
 import { LuCopyPlus } from 'react-icons/lu';
-import { HiOutlineDotsVertical } from 'react-icons/hi';
+import { HiOutlineDotsVertical } from 'react-icons/hi'
+import './treenode.css'
 
 export default function TreeNode({ node, onAddSubnode }) {
   const { children, label } = node;
   const [showChildren, setShowChildren] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [newNodeName, setNewNodeName] = useState('');
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
 
   const handleClick = () => {
     setShowChildren(!showChildren);
@@ -30,16 +32,28 @@ export default function TreeNode({ node, onAddSubnode }) {
     setShowInput(!showInput);
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   const hasChildren = children && children.length > 0;
   const isFirstSubnode = node.parentKey === undefined;
 
   return (
-    <div style={{backgroundColor:'#e6ecff'}}>
+    <div
+      className={`tree-node ${isHovered ? 'hovered-node' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div onClick={handleClick} style={{ marginBottom: '10px' }}>
-      <span style={{marginRight:'2rem'}}>{label}</span>
-        {isFirstSubnode && <BsPlus onClick={handleToggleInput} style={{marginRight:'1rem'}}/>}
-        <LuCopyPlus style={{marginRight:'1rem'}}/>
-       <HiOutlineDotsVertical/>
+        <span style={{ marginRight: '2rem' }}>{label}</span>
+        {isFirstSubnode && <BsPlus onClick={handleToggleInput} style={{ marginRight: '1rem' }} />}
+        <LuCopyPlus style={{ marginRight: '1rem' }} />
+        <HiOutlineDotsVertical />
       </div>
 
       {hasChildren && showChildren && (

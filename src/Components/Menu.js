@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-
-import { Nav, Navbar } from 'react-bootstrap';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Editor from './Editor';
 import Tree from './Tree';
 import Tabs from './Tabs';
@@ -14,9 +10,7 @@ export default function Menu() {
   const [showMenu, setShowMenu] = useState(false);
 
 
-  const handleMenuToggle = () => {
-    setShowTabs(!showTabs);
-  };
+ 
   const handleMenuOpen = () => {
     setShowMenu(true);
   };
@@ -132,7 +126,7 @@ export default function Menu() {
 
   return (
     <div className="row">
-      <div className="col-3 mt-75">
+      <div className={`col-3 mt-75 ${showMenu ? 'show-menu' : ''}`}>
         <Tabs onAddMainNode={handleAddMainNode} 
         onMenuOpen={handleMenuOpen} 
         />
